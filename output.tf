@@ -9,3 +9,11 @@ output "sec_group" {
 output "key_name" {
     value = aws_key_pair.deployer.key_name
 }
+
+output "usser_name" {
+    value = "some_username"
+}
+
+output "username" {
+    value = "password"
+}
