@@ -14,6 +14,6 @@ output "username" {
     value = "some_username"
 }
 
-output "username" {
+output "password" {
     value = "password"
 }
