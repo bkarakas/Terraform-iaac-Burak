@@ -10,7 +10,7 @@ output "key_name" {
     value = aws_key_pair.deployer.key_name
 }
 
-output "usser_name" {
+output "username" {
     value = "some_username"
 }
 
