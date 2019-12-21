@@ -16,8 +16,12 @@ resource "aws_instance" "web" {
         "sudo yum install -y epel-release",
         "sudo yum install httpd -y ",
         "sudo systemctl start httpd",
+        "sudo systemctl enable httpd",
         ]
       }
+  provisioner "local-exec" {
+    command = "echo Hello >> /tmp/file_hello"
+  }
   lifecycle{
     prevent_destroy = false
   }
@@ -25,6 +29,4 @@ resource "aws_instance" "web" {
     Name = "HelloWorld${count.index +1}"
   }
 }
-
-
  
