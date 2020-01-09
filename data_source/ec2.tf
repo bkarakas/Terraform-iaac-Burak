@@ -1,6 +1,6 @@
 # Go to region us-east-2
 provider "aws" {
-  region = "us-east-2"
+region = "us-east-2"
 }
 
 # Search for ubuntu latest with the owner
