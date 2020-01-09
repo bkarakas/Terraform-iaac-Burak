@@ -1,7 +1,3 @@
-# Go to region us-east-2
-provider "aws" {
-region = "us-east-1"
-}
 
 # Search for CentOS latest with the owner
 data "aws_ami" "centos" {
@@ -22,12 +18,12 @@ output "ami" {
     value = data.aws_ami.centos.id
 }
 
-resource "aws_key_pair" "deployer" { 
+resource "aws_key_pair" "towerkey" { 
   key_name   = "deployer" 
   public_key = file("~/.ssh/id_rsa.pub") 
 } 
 
-resource "aws_instance" "towerkey" {
+resource "aws_instance" "tower" {
   ami           = data.aws_ami.centos.id
   instance_type = "t2.micro"
   key_name = aws_key_pair.towerkey.key_name
@@ -54,5 +50,5 @@ resource "aws_route53_record" "tower" {
   name    = "tower.example.com" 
   type    = "A" 
   ttl     = "300" 
-  records = [aws_instance.web.public_ip] 
+  records = [aws_instance.tower.public_ip] 
 } 
