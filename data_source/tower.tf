@@ -19,7 +19,7 @@ output "centos" {
 }
 
 resource "aws_key_pair" "towerkey" { 
-  key_name   = "deployer" 
+  key_name   = "towerkey" 
   public_key = file("~/.ssh/id_rsa.pub") 
 } 
 
@@ -37,8 +37,7 @@ resource "aws_instance" "tower" {
           inline = [
               "sudo yum install -y epel-release",
               ]
-              }
-
+    }
   tags = {
     Name = "HelloWorld"
   }
