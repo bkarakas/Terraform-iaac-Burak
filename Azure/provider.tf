@@ -39,3 +39,7 @@ resource "azurerm_network_security_group" "sec_group1" {
                            environment = "Production"
                            }
                            }
+
+
+
+                           
