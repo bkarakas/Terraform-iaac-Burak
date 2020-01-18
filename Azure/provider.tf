@@ -42,4 +42,23 @@ resource "azurerm_network_security_group" "sec_group1" {
 
 
 
-                           
+resource "azurerm_network_interface" "nic1" {
+      name = "nic1"
+        location = "westus2"
+          resource_group_name = "${azurerm_resource_group.web_server_rg.name}"
+            ip_configuration {
+                name = "testconfiguration1"
+                    subnet_id = "${azurerm_subnet.private.id}"
+                        private_ip_address_allocation = "Dynamic"
+                            public_ip_address_id = "${azurerm_public_ip.IP.id}"
+            }
+}
+ 
+
+resource "azurerm_public_ip" "IP" {
+      name = "public_ip"
+        location = "westus2"
+          resource_group_name = "${azurerm_resource_group.web_server_rg.name}"
+            allocation_method = "Dynamic"
+            }
+
